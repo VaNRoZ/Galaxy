@@ -164,6 +164,18 @@ int main()
 
 		//rendering
 		Plot(Centre1, scr);
+		Plot(Centre2, scr);
 
+		for (int i = 0; i < n; i++)	Plot(Bodies1[i], scr);
+		for (int i = 0; i < n; i++) Plot(Bodies2[i], scr);
+
+		//drawing
+		if ((Centre1.pos - Centre2.pos)*(Centre1.pos - Centre2.pos) < 90.0f*90.0f)
+			scr.Zoom(9);
+		if ((Centre1.pos - Centre2.pos)*(Centre1.pos - Centre2.pos) < 110.0f*110.0f)
+			scr.Zoom(5);
+
+		scr.Draw();
 	}
+	return 0;
 }
