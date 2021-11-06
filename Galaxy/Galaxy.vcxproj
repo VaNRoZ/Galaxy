@@ -152,6 +152,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Galaxy.cpp" />
+    <ClCompile Include="Sun-Earth-Moon.cpp" />
+    <ClCompile Include="ThreeBody.cpp" />
     <ClCompile Include="vec3.cpp" />
   </ItemGroup>
   <ItemGroup>

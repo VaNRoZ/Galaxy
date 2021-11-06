@@ -1,6 +1,6 @@
 #include <iostream>
 #include "screen.h"
-#inluse "vec2.h"
+#include "vec2.h"
 
 struct Body
 {
@@ -17,6 +17,15 @@ struct Body
     vel = 0;
     acc = 0;
   }
+
+  Body(float m) :m(m)
+  {
+	  r = 0.2f * cbrt(m);
+	  pos = 0;
+	  vel = 0;
+	  acc = 0;
+  }
+
   Body(float m, float r) : r(r), m(m)
   {
     pos = 0;
@@ -30,7 +39,7 @@ struct Body
     pos.y = y;
   }
   
-  vois PulledBy(const Body& other)
+  void PulledBy(const Body& other)
   {
     const float G=1.0f;
     float dist = sqrt ( (pos-other.pos)*(pos-other.pos));
@@ -47,19 +56,19 @@ struct Body
 
 void Plot(const Body& body, Screen& scr)
 {
-  vec2 0 = body.pos;
-  vec2 x= body.pod + 0.5f * body.vel;
+  vec2 O = body.pos;
+  vec2 x= body.pos + 0.5f * body.vel;
   
   scr.PlotCircle(body.pos.x, body.pos.y, body.r);
   scr.PlotLine
   {
-    0.x,
-    0.y,
+    O.x,
+    O.y,
     X.x,
     X.y
     };
   
-  vec2 a = (0 - x);
+  vec2 a = (O - x);
   a.normalize();
   a * = 0.1f;
   vec2 b={a.y, -a.x};
@@ -72,7 +81,7 @@ void Plot(const Body& body, Screen& scr)
     X.y + a.y + b.y
     };
   
-  scr.Plotline
+  scr.PlotLine
   {
     X.x,
     X.y,
@@ -113,7 +122,7 @@ int main ()
       for(int j = 0; j < n; j ++) {
         if (i==j)
           continue;
-        solarSystem[j].PulleBy(solaeSystem[i]);
+        solarSystem[j].PulleBy(solarSystem[i]);
       }
     }
     
